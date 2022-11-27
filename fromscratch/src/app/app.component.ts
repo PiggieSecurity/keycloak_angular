@@ -10,8 +10,11 @@ export class AppComponent implements OnInit {
   public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
   public role: boolean = false;
+  public token: any;
+
   constructor(private readonly keycloak: KeycloakService) {
     this.role = keycloak.isUserInRole("admin")
+    this.token = keycloak.getKeycloakInstance().token
   }
 
   public async ngOnInit() {
@@ -30,5 +33,5 @@ export class AppComponent implements OnInit {
     this.keycloak.logout();
   }
 
-  
+    
 }
