@@ -7,23 +7,23 @@
   <h2>User information</h2>
   <table>
     <tr *ngIf="userProfile.username">
-      <th scope="row">Username</th>
+      <th>Username</th>
       <td>{{ userProfile.username }}</td>
     </tr>
     <tr *ngIf="userProfile.firstName">
-      <th scope="row">First name</th>
+      <th>First name</th>
       <td>{{ userProfile.firstName }}</td>
     </tr>
     <tr *ngIf="userProfile.lastName">
-      <th scope="row">First name</th>
+      <th>First name</th>
       <td>{{ userProfile.lastName }}</td>
     </tr>
     <tr *ngIf="userProfile.email">
-      <th scope="row">E-mail</th>
+      <th>E-mail</th>
       <td>{{ userProfile.email }}</td>
     </tr>
     <tr>
-      <th scope="row">E-mail verified</th>
+      <th>E-mail verified</th>
       <td>{{ userProfile.emailVerified ? 'Yes' : 'No' }}</td>
     </tr>
     <tr>
@@ -32,12 +32,16 @@
       <td *ngIf="!role">Is User</td>
     </tr>
     <tr>
-      <th scope="row">token</th>
+      <th>token</th>
       <td>{{token}}</td>
     </tr>
     <tr>
-      <th scope="row">response</th>
-      <td>{{response}}</td>
+      <th>response OPA</th>
+      <td>{{responseOpa}}</td>
+    </tr>
+    <tr>
+      <th>response No OPA</th>
+      <td>{{responseNoOpa}}</td>
     </tr>
   </table>
 </ng-container>

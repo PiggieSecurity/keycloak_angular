@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   public userProfile: KeycloakProfile | null = null;
   public role: boolean = false;
   public token: any;
-  public response:any;
+  public responseOpa:any;
+  public responseNoOpa:any;
 
   constructor(private readonly keycloak: KeycloakService, private http: HttpClient) {
     this.role = keycloak.isUserInRole("admin")
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
-    this.apiCall();
+    this.apiCallOpa();
+    this.apiCallNoOpa()
 
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
@@ -36,8 +38,13 @@ export class AppComponent implements OnInit {
     this.keycloak.logout();
   }
 
-  public apiCall(){
-    this.http.get('http://127.0.0.1:3000/test',{responseType: 'text'}).subscribe((res)=> this.response = res)
+  public apiCallOpa(){
+    const input = this.keycloak.getKeycloakInstance().token
+    console.log(input)
+    return this.http.post("http://localhost:8181", input).subscribe((res)=> this.responseOpa = res)
   }
-    
+  public apiCallNoOpa(){
+    this.http.get('http://127.0.0.1:3000/test',{responseType: 'text'}).subscribe((res)=> this.responseNoOpa = res)
+    console.log(this.responseNoOpa)
+  }
 }
