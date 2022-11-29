@@ -20,6 +20,8 @@
     "@angular/router": "^14.1.0",
     "@build-security/opa-express-middleware": "^0.0.3",
     "body-parser": "^1.20.1",
+    "express-oauth2-jwt-bearer": "^1.2.0",
+    "jwt-decode": "^3.1.2",
     "keycloak-angular": "^12.1.0",
     "keycloak-js": "^19.0.3",
     "rxjs": "~7.5.0",

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { text } from 'body-parser';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 
@@ -22,8 +23,7 @@ export class AppComponent implements OnInit {
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
-    this.apiCallOpa();
-    this.apiCallNoOpa()
+    this.apiCallOpa()
 
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
@@ -38,13 +38,13 @@ export class AppComponent implements OnInit {
     this.keycloak.logout();
   }
 
+  // public apiCallOpa(){
+  //   const input = this.keycloak.getKeycloakInstance().token
+  //   console.log(input)
+  //   return this.http.post("http://localhost:3000/test", input, {responseType: "text"}).subscribe((res)=> this.responseOpa = res )
+  // }
+
   public apiCallOpa(){
-    const input = this.keycloak.getKeycloakInstance().token
-    console.log(input)
-    return this.http.post("http://localhost:8181", input).subscribe((res)=> this.responseOpa = res)
-  }
-  public apiCallNoOpa(){
-    this.http.get('http://127.0.0.1:3000/test',{responseType: 'text'}).subscribe((res)=> this.responseNoOpa = res)
-    console.log(this.responseNoOpa)
+    return this.http.get("http://localhost:3000/test", {responseType: "text"}).subscribe((res) => this.responseOpa = res)
   }
 }
