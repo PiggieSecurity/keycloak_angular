@@ -1,5 +1,19 @@
-package authz
+package fromscratch
 
-import future.keywords.in
+import future.keywords.if
 
-default allow = true
+
+
+
+
+
+default allow = false
+
+
+
+
+allow {
+ 
+   input.realm_access.roles[_] = "admin"
+
+}
