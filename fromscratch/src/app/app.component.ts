@@ -38,11 +38,7 @@ export class AppComponent implements OnInit {
     this.keycloak.logout();
   }
 
-  // public apiCallOpa(){
-  //   const input = this.keycloak.getKeycloakInstance().token
-  //   console.log(input)
-  //   return this.http.post("http://localhost:3000/test", input, {responseType: "text"}).subscribe((res)=> this.responseOpa = res )
-  // }
+
 
   public apiCallOpa(){
     return this.http.get("http://localhost:3000/test", {responseType: "text"}).subscribe((res) => this.responseOpa = res)
