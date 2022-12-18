@@ -1,0 +1,20 @@
+name: sbom
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      - name: create SBOM
+        uses: CycloneDX/gh-node-module-generatebom@master
+        with:
+          output: './sbom.xml'
