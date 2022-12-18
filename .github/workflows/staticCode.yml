@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  check-quality:
+    runs-on: ubuntu-latest
+    name: A job to check my code quality
+    steps:
+    - name: Check code meets quality standards
+      id: codiga
+      uses: codiga/github-action@master
+      with:
+        repo_token: ${{ secrets.TOKEN_GITHUB }}
+        codiga_api_token: ${{ secrets.CODIGA_API_TOKEN }}
+        max_timeout_sec: '600'
