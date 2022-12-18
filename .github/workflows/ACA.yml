@@ -1,0 +1,26 @@
+name: application composition analysis
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2.4.0
+        
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+
+      - name: code analysis
+        uses: SecureStackCo/actions-code@v0.1.1
+        with:
+          securestack_api_key: ${{ secrets.SECURESTACK_API_KEY }}
+          securestack_app_id: ${{ secrets.SECURESTACK_APP_ID }}
+          severity: critical
+          language: node
