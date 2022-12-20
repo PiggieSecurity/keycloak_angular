@@ -1,5 +1,4 @@
 FROM node:latest as node
-WORKDIR /fromscratch
 COPY . .
 RUN npm install
 RUN npm run build --prod
