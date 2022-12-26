@@ -1,6 +1,6 @@
 FROM node:current-slim
 
-WORKDIR /fromscratch/src
+WORKDIR /fromscratch/
 COPY package.json .
 RUN npm install
 
