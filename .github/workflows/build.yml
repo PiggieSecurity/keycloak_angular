@@ -15,7 +15,6 @@ jobs:
       name: build and push docker
       with:
         image: 121706/keycloak
-        tag: latest
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
