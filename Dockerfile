@@ -1,5 +1,6 @@
 FROM node:latest as node
 COPY . .
+RUN npm init
 RUN npm install
 RUN npm run build --prod
 
