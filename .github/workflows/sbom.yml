@@ -1,4 +1,4 @@
-name: sbom
+name: build js create sbom
 
 on:
   push:
