@@ -17,9 +17,9 @@ jobs:
         with:
           context: .
           load: true
-          tags: s121706/keycloak:latest
+          tags: s121706/app:latest
       - name: scan for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v2
         with:
-          image: s121706/keycloak:latest
+          image: s121706/app:latest
           annotations: true
