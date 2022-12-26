@@ -1,8 +1,10 @@
-FROM node:latest as node
-COPY . .
-RUN npm init
-RUN npm install
-RUN npm run build --prod
+FROM node:current-slim
 
-FROM nginx:alpine
-COPY --from=node /app/dist/demo-app /usr/share/nginx/html
+WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install
+
+EXPOSE 8080
+CMD [ "npm", "start" ]
+
+COPY . .
