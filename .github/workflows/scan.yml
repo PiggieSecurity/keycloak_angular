@@ -1,4 +1,4 @@
-name: ci
+name: container scan for vulnerabilities
 
 on:
   push:
